@@ -1,0 +1,19 @@
+{
+  "name": "yandex-cup-2024",
+  "version": "1.0.0",
+  "description": "",
+  "main": "archive.ts",
+  "scripts": {
+    "compile": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skychik/yandex-cup-2024.git"
+  },
+  "private": true,
+  "dependencies": {
+    "@zip.js/zip.js": "^2.7.52",
+    "typescript": "^5.6.3"
+  }
+}
