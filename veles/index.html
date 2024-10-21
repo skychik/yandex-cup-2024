@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #111111;
+            color: #fff;
+            margin: 0;
+            padding: 16px;
+            font-size: 12px;
+            line-height: 12px;
+            height: calc(100dvh - 32px);
+            width: calc(100dvw - 32px);
+        }
+
+        .nums {
+            position: absolute;
+            display: flex;
+            gap: 8px;
+        }
+
+        .num {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FAFF00;
+            color: #111111;
+            border-radius: 3px;
+            height: 28px;
+            width: 28px;
+        }
+
+        .selected {
+            background-color: #DC44CD;
+        }
+
+        .main {
+            margin: 16px;
+            width: calc(100% - 32px);
+            height: calc(100% - 32px);
+        }
+
+        .card {
+            background-color: #fff;
+            height: 106px;
+            width: 240px;
+            border-radius: 3px;
+            border: 1px solid #111111;
+        }
+
+        .separateCards {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .separateCardsAround {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .width100 {
+            width: 100%;
+        }
+
+        .cards-2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .cards-3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .cards-4 {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .center {
+            margin-inline: auto;
+        }
+
+        .cards-6 {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sixTopCard {
+            grid-area: cardTop;
+
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="nums">
+    <div class="num" id="players-2">2</div>
+    <div class="num" id="players-3">3</div>
+    <div class="num" id="players-4">4</div>
+    <div class="num" id="players-5">5</div>
+    <div class="num" id="players-6">6</div>
+</div>
+<div class="main">
+    <div class="cards cards-2">
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+    <div class="cards cards-3">
+        <div class="card"></div>
+        <div></div>
+        <div class="separateCards width100">
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <div></div>
+    </div>
+    <div class="cards cards-4">
+        <div class="card center"></div>
+        <div class="separateCards">
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <div class="card center"></div>
+    </div>
+    <div class="cards cards-6">
+        <div class="card center"></div>
+        <div class="separateCardsAround">
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <div></div>
+        <div class="separateCardsAround">
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <div class="card center"></div>
+    </div>
+</div>
+<script>
+    const nums = document.querySelectorAll('.num');
+    const cardsContainers = document.querySelectorAll('.cards');
+
+    let selected = 3;
+
+    const select = (id) => {
+        selected = id;
+
+        nums.forEach(num => {
+            num.classList.remove('selected');
+        });
+        document.getElementById(`players-${id}`).classList.add('selected');
+
+        cardsContainers.forEach(container => {
+            container.classList.add('hidden');
+        });
+        document.querySelector(`.cards-${id}`).classList.remove('hidden');
+    }
+
+    select(selected);
+
+    nums.forEach(num => {
+        num.addEventListener('click', (evt) => {
+            const id = Number(evt.target.id.slice(-1));
+            console.log(id);
+            select(id);
+        });
+    });
+</script>
+</body>
+</html>
